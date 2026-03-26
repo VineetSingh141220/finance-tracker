@@ -1,127 +1,75 @@
-# Personal Finance Tracker+
+# Finance Tracker+ 🚀
 
-A complete 3-tier web application for tracking personal finances, managing budgets, and getting AI-powered spending insights.
+A premium 3-tier Personal Finance Management system featuring AI-driven insights, persistent cloud storage, and a stunning dark-mode Glassmorphism interface.
 
-## Project Structure
-This repository contains three separate services:
-1. **Frontend**: Next.js 14, Recharts, Tailwind CSS (Dark Theme)
-2. **Backend**: Node.js, Express, MongoDB, SQLite (for monthly reports)
-3. **Python Service**: Flask, Pandas (for spending analysis)
+## 🔗 Live Application
+- **Live App**: [https://finance-tracker-puce-mu.vercel.app](https://finance-tracker-puce-mu.vercel.app)
+- **API Server**: [https://finance-tracker-backend-hwqy.onrender.com](https://finance-tracker-backend-hwqy.onrender.com)
+- **AI Service**: [https://finance-tracker-ai-6p00.onrender.com](https://finance-tracker-ai-6p00.onrender.com)
 
----
-
-## Test Credentials
-The database seed script automatically creates these users for testing:
-- **User**: `vineet@fintracker.com` / `Vineet@123` (Has 60 seeded expenses & budgets)
-- **Admin**: `admin@example.com` / `admin123`
+## 🔑 Test Credentials
+Use these to explore the pre-seeded data:
+- **Email**: `vineet@fintracker.com`
+- **Password**: `Vineet@123`
 
 ---
 
-## Prerequisites
-- Node.js (v18+)
-- Python (v3.12+)
-- MongoDB Atlas (Cloud) or Local MongoDB
+## ✨ Key Features
+- **3-Tier Architecture**: Scalable separation of Frontend (Next.js), Backend (Node.js), and AI Analysis (Python).
+- **AI Smart Insights**: Integration with a Python/Flask microservice for financial velocity and spending patterns.
+- **Persistent Cloud Storage**: Powered by **MongoDB Atlas** for secure, multi-user data persistence.
+- **Premium UI/UX**: Modern dark-themed design with Glassmorphism effects and responsive layouts.
+- **Interactive Data Visualization**: Real-time spending charts using Recharts.
+- **Safe & Secure**: JWT-based authentication with auto-refresh tokens and secure cookie handling.
 
 ---
 
-## Quick Start (Run Locally)
+## 🏗️ Architecture
+- **Frontend**: Next.js 14, TypeScript, Tailwind CSS, Lucide icons, Recharts.
+- **Backend**: Node.js, Express, Mongoose, Zod, JWT.
+- **AI Microservice**: Python, Flask, Pandas (Financial analysis).
+- **Database**: MongoDB Atlas (Cloud) + SQLite (for monthly reporting snapshot caching).
 
-### 1. Backend API (Node + Express)
+---
+
+## 🚀 Local Setup
+
+### 1. Prerequisites
+- Node.js 18+
+- Python 3.9+
+- MongoDB (Local or Atlas)
+
+### 2. Backend Setup
 ```bash
 cd backend
 npm install
-npm run seed     # Creates Vineet Singh user and 60 random expenses
-npm run dev      # Starts server on port 5001
+# Configure .env based on .env.example
+npm run seed  # Seed initial data
+npm run dev   # Start dev server
 ```
 
-### 2. Python Microservice (Pandas Analyzer)
+### 3. Python Service Setup
 ```bash
 cd python-service
-# Use the automated script for Windows:
-.\start_ai.bat   # Installs dependencies and starts on port 8000
+pip install -r requirements.txt
+python app.py
 ```
 
-### 3. Frontend App (Next.js)
+### 4. Frontend Setup
 ```bash
 cd frontend
 npm install
-npm run dev      # Starts Next.js on port 3000
+# Configure .env.local based on .env.example
+npm run dev
 ```
 
-Now open [http://localhost:3000](http://localhost:3000) and login with `vineet@fintracker.com` / `Vineet@123`.
-
 ---
 
-## Deployment Guide
-
-### 1. GitHub Push
-Ensure you have a `.gitignore` at the root (one has been created for you).
-```bash
-git init
-git add .
-git commit -m "Final submission: 3-tier Finance Tracker+"
-# Add your repo URL
-git remote add origin <your-repo-url>
-git push -u origin main
-```
-
-### 2. Frontend (Vercel)
-- Connect your GitHub repo.
-- **Root Directory**: `frontend`
-- **Build Command**: `next build`
-- **Output Directory**: `.next`
-- **Install Command**: `npm install`
-- **Env Vars**: 
-  - `NEXT_PUBLIC_API_URL`: Your Render Backend URL + `/api`
-  - `NEXT_PUBLIC_PYTHON_API_URL`: Your Render Python URL
-
-### 3. Backend (Render)
-- **Root Directory**: `backend`
-- **Build Command**: `npm install && npm run build`
-- **Start Command**: `npm run start`
-- **Env Vars**: Set all variables from `.env.example`.
-
-### 4. Python AI (Render)
-- **Root Directory**: `python-service`
-- **Runtime**: `Python 3`
-- **Build Command**: `pip install -r requirements.txt`
-- **Start Command**: `python app.py`
+## 🛠️ Extra Features Added
+1. **AI Velocity Analysis**: Uses Python to calculate how fast you are spending money compared to your average.
+2. **Glassmorphism Design**: Custom CSS tokens for a premium "Apple-style" glass effect on cards and modals.
+3. **Advanced Rate Limiting**: Protection against brute-force attacks on auth routes.
+4. **Cloud Migration**: Successfully transitioned from local SQLite to a full cloud-based MongoDB Atlas cluster.
 
 ---
-
-## Core Features Implemented
-- **Secure Auth**: JWT short-lived Access Tokens + 7-day HTTP-Only Refresh Tokens
-- **Expense Tracking**: Full CRUD with search, category filtering, and pagination
-- **Smart Budgets**: Set monthly category limits with real-time progress bars showing 80%+ alerts
-- **Dashboard**: Advanced data visualization using MongoDB `$facet` aggregation
-- **Monthly Reports**: Generated automatically via `node-cron` on the 1st of every month, stored in **SQLite**
-- **AI Analysis**: Pandas-powered microservice generating instant insights on spending habits
-
----
-
-## API Endpoints Overview
-
-### Auth
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `POST /api/auth/refresh`
-- `POST /api/auth/logout`
-
-### Expenses (Protected)
-- `GET    /api/expenses`
-- `POST   /api/expenses`
-- `PUT    /api/expenses/:id`
-- `DELETE /api/expenses/:id`
-
-### Budgets (Protected)
-- `GET  /api/budgets`
-- `POST /api/budgets`
-- `GET  /api/budgets/alerts`
-
-### Reports & Dashboard (Protected)
-- `GET  /api/dashboard/summary`
-- `GET  /api/reports`
-- `POST /api/reports/generate`
-
-### Python Microservice
-- `POST /analyze` (Receives expenses/budgets array, returns insights)
+**Developed by Vineet Singh** 💎👑
